@@ -24,5 +24,5 @@ resource "hcloud_server" "ai" {
     "terraform-hetzner"
   ]
 
-  user_data = file("../cloud-init/cloud-init.yaml")
+  user_data = file("../bootstrap/cloud-init.yaml")
 }

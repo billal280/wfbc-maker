@@ -1,0 +1,14 @@
+package_update: true
+packages:
+  - curl
+  - git
+
+runcmd:
+  - systemctl enable docker
+  - systemctl start docker
+
+  - mkdir -p /opt/ai-factory
+
+  - git clone https://github.com/billal280/wfbc-maker /opt/ai-factory
+
+  - bash /opt/ai-factory/bootstrap/install-stack.sh
