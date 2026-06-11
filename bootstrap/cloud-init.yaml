@@ -1,9 +1,13 @@
 package_update: true
+package_upgrade: true
+
 packages:
   - curl
   - git
+  - ca-certificates
 
 runcmd:
+  - curl -fsSL https://get.docker.com | sh
   - systemctl enable docker
   - systemctl start docker
 
@@ -11,4 +15,6 @@ runcmd:
 
   - git clone https://github.com/billal280/wfbc-maker /opt/ai-factory
 
-  - bash /opt/ai-factory/bootstrap/install-stack.sh
+  - chmod +x /opt/ai-factory/bootstrap/install-stack.sh
+
+  - /opt/ai-factory/bootstrap/install-stack.sh
