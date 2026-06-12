@@ -29,6 +29,17 @@ services:
       - qdrant_data:/qdrant/storage
     restart: unless-stopped
 
+  orchestrator:
+    image: python:3.11
+    container_name: orchestrator
+    working_dir: /app
+    volumes:
+      - ./orchestrator:/app
+    command: bash -c "pip install -r requirements.txt && python main.py"
+    restart: unless-stopped
+    env_file:
+      - ./orchestrator/.env
+
 volumes:
   open-webui:
   postgres_data:
